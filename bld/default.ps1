@@ -28,20 +28,53 @@ Task Create-NuGetPackages {
   Pop-Location
 }
 
-Task Push-Packages {
+Task Push-Packages {  
   $apiKey = '';
+  $apiKeyConfigured = $false
+  
+  # Is API key passed as an argument?
   if($args.Length -eq 1)
   {
     $apiKey = $args[0]
+	$apiKeyConfigured = $true;
   }
-  else
+  
+  # Check NuGet.config for API key.
+  if($apiKeyConfigured -eq $false)
+  {
+    $path = "$env:APPDATA\NuGet\NuGet.config"
+    [xml] $xml = Get-Content $path
+  
+    foreach($key in $xml.configuration.apikeys) {
+	
+      if ($key.add.key -eq "https://www.nuget.org") {
+        $apiKeyConfigured = $true
+	    break
+      }
+    }
+  }
+  
+  # Prompt user to enter API key.
+  if($apiKeyConfigured -eq $false)
   {
     Write-Host 'API key: ' -NoNewline
-    $apiKey = read-host
+    $apiKey = Read-Host
   }
 
   Get-ChildItem $out -Filter *.nupkg | ForEach {
-    $pkg = $_.FullName
-    Exec { Invoke-Expression "$nuget push $pkg $apiKey" }
+    try
+	{
+	  $pkg = $_.FullName
+	  
+	  if($apiKey.Length -eq 0)
+	  {
+        Exec { Invoke-Expression "$nuget push $pkg" }
+	  }
+	  else
+	  {
+	    Exec { Invoke-Expression "$nuget push $pkg $apiKey" }
+	  }
+	}
+	catch { }
   }
 }
