@@ -63,18 +63,18 @@ Task Push-Packages {
 
   Get-ChildItem $out -Filter *.nupkg | ForEach {
     try
-	{
-	  $pkg = $_.FullName
+	  {
+  	  $pkg = $_.FullName
 	  
-	  if($apiKey.Length -eq 0)
-	  {
+	    if($apiKey.Length -eq 0)
+	    {
         Exec { Invoke-Expression "$nuget push $pkg" }
-	  }
-	  else
-	  {
-	    Exec { Invoke-Expression "$nuget push $pkg $apiKey" }
-	  }
-	}
-	catch { }
+      }
+      else
+      {
+        Exec { Invoke-Expression "$nuget push $pkg $apiKey" }
+      }
+    }
+    catch { }
   }
 }
