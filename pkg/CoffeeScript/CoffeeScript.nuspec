@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>1.6.2</version>
+    <authors>Jeremy Ashkenas</authors>
+    <owners>Philip Proplesch</owners>
+    <projectUrl>https://github.com/jashkenas/coffee-script</projectUrl>
+    <id>CoffeeScript</id>
+    <title />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CoffeeScript is a little language that compiles into JavaScript.</description>
+    <tags>coffeescript coffee script javascript js web html compiler</tags>
+  </metadata>
+  <files>
+    <file src="Scripts\coffee-script.js" target="content\Scripts\coffee-script.js" />
+  </files>
+</package>

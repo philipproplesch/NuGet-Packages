@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>3.10.1</version>
+    <authors>Yahoo</authors>
+    <owners>Philip Proplesch</owners>
+    <projectUrl>http://yuilibrary.com/yui/docs/cssreset/</projectUrl>
+    <id>Yui.CssReset</id>
+    <title />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The foundational CSS Reset removes the inconsistent styling of HTML elements provided by browsers. This creates a dependably flat foundation to build upon. With CSS Reset loaded, write explicit CSS your project needs.</description>
+    <tags>yui css cssreset reset stylesheet</tags>
+  </metadata>
+  <files>
+    <file src="Content\cssreset.css" target="content\Content\cssreset.css" />
+    <file src="Content\cssreset-min.css" target="content\Content\cssreset-min.css" />
+  </files>
+</package>
